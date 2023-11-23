@@ -359,7 +359,6 @@ body.no-scroll {
         border-radius: 487.206px;
         opacity: 0.3;
         background: linear-gradient(81deg, #a717ff 10.26%, #01fff0 90.37%);
-        filter: blur(100px);
     }
 
     .header__menu .header__button {
