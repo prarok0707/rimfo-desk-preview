@@ -255,8 +255,6 @@ body.no-scroll {
 
 .header.active .header__menu {
     transform: translate3d(0, 0, 0);
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .header.active .header__button-burger span {
@@ -342,10 +340,7 @@ body.no-scroll {
         z-index: -1;
         background: var(--color-09, #0a1117);
         transform: translate3d(0, -101%, 0);
-        opacity: 0;
-        pointer-events: none;
-        transition-property: opacity, transform;
-        transition-duration: 0.2s;
+        transition: transform 0.2s linear;
     }
 
     .header__menu::after {
@@ -359,6 +354,7 @@ body.no-scroll {
         border-radius: 487.206px;
         opacity: 0.3;
         background: linear-gradient(81deg, #a717ff 10.26%, #01fff0 90.37%);
+        filter: blur(100px);
     }
 
     .header__menu .header__button {
