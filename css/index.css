@@ -344,10 +344,6 @@ body.no-scroll {
         bottom: 0;
         z-index: -1;
         background: var(--color-09, #0a1117);
-        background-image: url("../images/header/dekor_01.svg");
-        background-repeat: no-repeat;
-        background-position: left bottom;
-        background-size: cover;
         transform: scale(0.98);
         opacity: 0;
         visibility: hidden;
