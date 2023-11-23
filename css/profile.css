@@ -565,7 +565,6 @@ body.no-scroll {
     background: var(--color-04);
     position: absolute;
     left: calc(50% - 16px);
-    transition: background 0.2s linear, transform 0.2s linear;
 }
 
 .header__button-burger::before {
@@ -599,6 +598,7 @@ body.no-scroll {
         height: 4px;
         border-radius: 4px;
         background: var(--color-04);
+        transition: background 0.2s linear, transform 0.2s linear;
         position: absolute;
         left: 0;
     }
