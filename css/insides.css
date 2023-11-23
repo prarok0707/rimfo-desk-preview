@@ -250,12 +250,11 @@ body.no-scroll {
 }
 
 .header.active .header__container::after {
-    opacity: 0;
-    visibility: hidden;
+    background: rgba(0, 0, 0, 0);
 }
 
 .header.active .header__menu {
-    transform: scale(1);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -318,7 +317,7 @@ body.no-scroll {
         background: rgba(0, 0, 0, 0.65);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        transition: opacity 0.2s linear, visibility 0.2s linear;
+        transition: background 0.4s linear;
     }
 }
 
@@ -344,7 +343,11 @@ body.no-scroll {
         bottom: 0;
         z-index: -1;
         background: var(--color-09, #0a1117);
-        transform: scale(0.98);
+        background-image: url("../images/header/dekor_01.svg");
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: cover;
+        transform: translate3d(0, -101%, 0);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
