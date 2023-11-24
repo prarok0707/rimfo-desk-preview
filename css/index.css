@@ -249,6 +249,10 @@ body.no-scroll {
     flex: 1 1 auto;
 }
 
+.header.active .header__container::after {
+    opacity: 0;
+}
+
 .header.active .header__menu {
     transform: translate3d(0, 0, 0);
     opacity: 1;
@@ -799,6 +803,24 @@ body.no-scroll {
     line-height: 1.357;
  /* 19.6px */
     color: var(--color-01, #fff);
+}
+
+.index {
+    position: relative;
+}
+
+.index__bg {
+    display: block;
+    position: absolute;
+    top: calc(var(--header-height) - var(--header-height) * 2);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.index__bg img {
+    width: 100%;
 }
 
 .index__title {
