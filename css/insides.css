@@ -249,10 +249,6 @@ body.no-scroll {
     flex: 1 1 auto;
 }
 
-.header.active .header__container::after {
-    opacity: 0;
-}
-
 .header.active .header__menu {
     transform: translate3d(0, 0, 0);
     opacity: 1;
