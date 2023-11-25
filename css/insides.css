@@ -1,6 +1,9 @@
+@charset "UTF-8";
+
 :root {
     --max-width-wrapper: 1920px;
     --max-width-container: 1240px;
+    --max-width-container-secondary: 610px;
     --container-pi: 15px;
     --header-height: 65px;
     --color-01: #ffffff;
@@ -212,6 +215,7 @@ body.no-scroll {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    position: relative;
     overflow: hidden;
 }
 
@@ -227,6 +231,32 @@ body.no-scroll {
     margin: 0 auto;
     padding: 0 var(--_padding-inline);
     max-width: calc(var(--_max-width-container) + var(--_padding-inline) * 2);
+}
+
+.container-secondary {
+    --_max-width-container: var(--max-width-container-secondary, 610px);
+    --_padding-inline: var(--container-pi, 15px);
+    margin: 0 auto;
+    padding: 30px var(--_padding-inline) 80px;
+    max-width: calc(var(--_max-width-container) + var(--_padding-inline) * 2);
+}
+
+@media (min-width: 768px) {
+    .container-secondary {
+        padding: 40px var(--_padding-inline) 100px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container-secondary {
+        padding: 50px var(--_padding-inline) 140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-secondary {
+        padding: 60px var(--_padding-inline) 200px;
+    }
 }
 
 .image {
@@ -249,6 +279,20 @@ body.no-scroll {
     flex: 1 1 auto;
 }
 
+.background {
+    max-width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.background img {
+    width: 100%;
+}
+
 .header.active .header__container::after {
     opacity: 0;
 }
@@ -261,16 +305,16 @@ body.no-scroll {
 }
 
 .header.active .header__button-burger span {
-    transform: scale(0);
+    transform: scale3d(0, 0, 0);
 }
 
 .header.active .header__button-burger::before {
     top: calc(50% - 2px);
-    transform: rotate(-45deg);
+    transform: rotate3d(0, 0, 1, -45deg);
 }
 
 .header.active .header__button-burger::after {
-    transform: rotate(45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
     bottom: calc(50% - 2px);
 }
 
@@ -353,6 +397,20 @@ body.no-scroll {
         pointer-events: none;
         transition-property: opacity, visibility, transform;
         transition-duration: 0.2s;
+    }
+
+    .header__menu::after {
+        content: "";
+        width: 487px;
+        height: 348px;
+        position: absolute;
+        left: -134px;
+        bottom: -180px;
+        transform: rotate(18.546deg);
+        border-radius: 487.206px;
+        opacity: 0.3;
+        background: linear-gradient(81deg, #a717ff 10.26%, #01fff0 90.37%);
+        filter: blur(100px);
     }
 
     .header__menu .header__button {
@@ -465,10 +523,6 @@ body.no-scroll {
     right: 0;
     bottom: 0;
     background: var(--color-09, #0a1117);
-    background-image: url("../images/header/dekor_01.svg");
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-size: cover;
     transform: translate3d(0, -101%, 0);
     opacity: 0;
     visibility: hidden;
@@ -519,6 +573,20 @@ body.no-scroll {
 
     .header_profile .header__menu {
         z-index: -999;
+    }
+
+    .header_profile .header__menu::after {
+        content: "";
+        width: 800px;
+        height: 600px;
+        position: absolute;
+        left: -134px;
+        bottom: -180px;
+        transform: rotate(18.546deg);
+        border-radius: 487.206px;
+        opacity: 0.3;
+        background: linear-gradient(81deg, #a717ff 10.26%, #01fff0 90.37%);
+        filter: blur(100px);
     }
 
     .header_profile .header__action,
@@ -803,4 +871,855 @@ body.no-scroll {
     line-height: 1.357;
  /* 19.6px */
     color: var(--color-01, #fff);
+}
+
+.inputs {
+    --height: 40px;
+    --pi: 15px;
+    --fs: 1.125rem;
+    --label-fs: 0.875rem;
+    --description-fs: 0.875rem;
+    --border-radius: 8px;
+    --gap: 5px;
+    --clr: var(--color-01, #fff);
+    --clr-focus: var(--color-05, #01fff0);
+    --bg: var(--color-06, #121e28);
+    --border-clr: var(--color-02, #c6c6c6);
+    --label-clr: var(--color-02, #c6c6c6);
+    --description-clr: var(--color-08, #2a3744);
+    --error-clr: var(--color-03, #f78787);
+}
+
+.inputs.error {
+    --border-clr: var(--error-clr);
+}
+
+.inputs.error .inputs-error {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .inputs {
+        --height: 45px;
+        --pi: 20px;
+        --fs: 1.25rem;
+        --label-fs: 1rem;
+        --description-fs: 1rem;
+        --border-radius: 12px;
+        --gap: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .inputs {
+        --height: 50px;
+        --fs: 1.625rem;
+        --label-fs: 1.125rem;
+        --description-fs: 1.125rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .inputs {
+        --height: 60px;
+        --fs: 2rem;
+        --label-fs: 1.25rem;
+        --description-fs: 1.25rem;
+    }
+}
+
+.inputs .inputs-error {
+    display: none;
+}
+
+.inputs__description {
+    padding: var(--gap) 0 0 0;
+    display: block;
+    font-size: var(--description-fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--description-clr);
+}
+
+/*
+<div class="inputs input">
+  <div class="input__wrapper">
+    <div class="input__group">
+      <input class="input__target" type="text" />
+
+      <div class="input__lables">
+        <span class="input__label">Фамилия</span>
+        <span class="input__label inputs-error">Заполните поле</span>
+      </div>
+    </div>
+
+    <p class="inputs__description">
+      Для получения договора и документов об оплате
+    </p>
+  </div>
+</div>
+*/
+.input__group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input__target {
+    width: 100%;
+    display: block;
+    font-size: var(--fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--clr);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-clr);
+    background: var(--bg);
+    transition: color 0.2s linear, border-color 0.2s linear;
+}
+
+.input__target:focus {
+    color: var(--clr-focus);
+    border-color: var(--clr-focus);
+}
+
+.input__target:focus + .input__lables .input__label:not(.inputs-error) {
+    color: var(--clr-focus);
+}
+
+input.input__target {
+    height: var(--height);
+    padding: 0 var(--pi);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    box-orient: vertical;
+}
+
+textarea.input__target {
+    height: 8.75rem;
+    padding: 0.625rem var(--pi);
+    resize: none;
+}
+
+@media (min-width: 768px) {
+    textarea.input__target {
+        height: 12.5rem;
+    }
+}
+
+.input__lables {
+    order: -1;
+    margin: 0 0 var(--gap) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap) 10px;
+}
+
+@media (min-width: 768px) {
+    .input__lables {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 10px;
+    }
+}
+
+.input__label {
+    display: block;
+    font-size: var(--label-fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--label-clr);
+    transition: color 0.2s linear;
+}
+
+.input__label.inputs-error {
+    color: var(--error-clr);
+}
+
+/*
+<div class="inputs checkbox">
+  <div class="checkbox__wrapper">
+    <label class="checkbox__label">
+      <input class="checkbox__input" type="checkbox" />
+      <div class="checkbox__icon">
+        <svg>
+          <use
+            href="../images/sprite.svg#check"
+            xlink:href="../images/sprite.svg#check"
+          ></use>
+        </svg>
+      </div>
+      <p class="checkbox__text">
+        Я ознакомлен и согласен со
+        <span>следующим</span>
+      </p>
+    </label>
+  </div>
+</div>
+*/
+.checkbox {
+    --size: 25px;
+    --svg-size: 15px;
+    --border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+    .checkbox {
+        --size: 30px;
+        --svg-size: 20px;
+    }
+}
+
+.checkbox__wrapper {
+    display: flex;
+    justify-content: start;
+}
+
+.checkbox__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox__input {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    z-index: -999;
+}
+
+@media (any-hover: hover) {
+    .checkbox__input:hover + .checkbox__icon {
+        background: var(--clr-focus);
+    }
+}
+
+.checkbox__input:checked + .checkbox__icon {
+    background: var(--clr-focus);
+}
+
+.checkbox__input:checked + .checkbox__icon svg {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.checkbox__icon {
+    flex: 0 0 var(--size);
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--clr-focus);
+    transition: background 0.2s linear;
+}
+
+.checkbox__icon svg {
+    flex: 0 0 var(--svg-size);
+    width: var(--svg-size);
+    height: var(--svg-size);
+    display: block;
+    fill: transparent;
+    stroke: var(--color-07);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: scale3d(0, 1, 1);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition-property: opacity, visibility, transform;
+    transition-duration: 0.2s;
+}
+
+.checkbox__text {
+    padding: 0 0 0 0.313rem;
+    display: block;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-02, #c6c6c6);
+}
+
+.checkbox__text span,
+.checkbox__text a {
+    color: var(--clr-focus);
+}
+
+@media (any-hover: hover) {
+    .checkbox__text span:hover,
+  .checkbox__text a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: 576px) {
+    .checkbox__text {
+        padding: 0 0 0 0.625rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .checkbox__text {
+        font-size: 1.25rem;
+    }
+}
+
+/*
+<div class="inputs select">
+  <div class="select__wrapper">
+    <div class="select__labels">
+      <span class="select__label">Место рождения</span>
+      <span class="select__label inputs-error">Выберите место</span>
+    </div>
+
+    <div class="select__body">
+      <select data-select>
+        <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Екатеренбург">Екатеренбург</option>
+      </select>
+
+      <div class="select__icon">
+        <svg>
+          <use
+            href="../images/sprite.svg#arrow"
+            xlink:href="../images/sprite.svg#arrow"
+          ></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+*/
+.select {
+    --icon-size: var(--height);
+    --pr: calc(var(--icon-size) + var(--pi) + 10px);
+}
+
+.select__labels {
+    margin: 0 0 var(--gap) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap) 10px;
+}
+
+@media (min-width: 768px) {
+    .select__labels {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 10px;
+    }
+}
+
+.select__label {
+    display: block;
+    font-size: var(--label-fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--label-clr);
+    transition: color 0.2s linear;
+}
+
+.select__label.inputs-error {
+    color: var(--error-clr);
+}
+
+.select__body {
+    position: relative;
+}
+
+.select__icon {
+    flex: 0 0 var(--icon-size);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    position: absolute;
+    top: -50%;
+    right: var(--pi);
+    pointer-events: none;
+    transform: translate3d(0, 50%, 0);
+}
+
+.select__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: transparent;
+    stroke: var(--color-02, #c6c6c6);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s linear, transform 0.2s linear;
+}
+
+.select__body .select2-container {
+    display: block;
+}
+
+.select__body .select2-container--open .select2-selection.select2-selection--single {
+    border-color: var(--clr-focus);
+}
+
+.select__body .select2-container--open + .select__icon svg {
+    transform: scale(-1, -1);
+}
+
+.select__body .select2-selection.select2-selection--single {
+    width: 100%;
+    height: var(--height);
+    padding: 0 var(--pr) 0 var(--pi);
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--border-clr);
+    background: var(--bg);
+    transition: border-color 0.2s linear;
+}
+
+.select .select__body .select2-container .select2-selection__rendered {
+    padding: 0;
+    display: block;
+    font-size: var(--fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--clr);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    box-orient: vertical;
+    white-space: normal;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    display: none;
+}
+
+.select__dropdown .select2-search.select2-search--dropdown {
+    display: none;
+}
+
+.select__dropdown.select2-dropdown {
+    border-radius: var(--border-radius) !important;
+    z-index: calc(var(--zIndex) - 1);
+    overflow: hidden;
+    background: var(--bg);
+    border: none;
+}
+
+.select__dropdown.select2-dropdown.select2-dropdown--below {
+    transform: translate3d(0, var(--gap, 10px), 0);
+}
+
+.select__dropdown.select2-dropdown.select2-dropdown--above {
+    transform: translate3d(0, calc(var(--gap, 10px) - var(--gap, 10px) * 2), 0);
+}
+
+.select__dropdown .select2-results__option {
+    padding: 10px var(--pi) !important;
+    font-size: var(--label-fs);
+    font-weight: 400;
+    color: var(--clr) !important;
+    background: none !important;
+    transition: background 0.2s linear, color 0.2s linear;
+}
+
+@media (any-hover: hover) {
+    .select__dropdown .select2-results__option:hover {
+        color: var(--color-07, #000) !important;
+        background: var(--clr-focus) !important;
+    }
+}
+
+.select__dropdown .select2-results__option--selected {
+    font-weight: 700;
+    color: var(--color-07, #000) !important;
+    background: var(--clr-focus) !important;
+}
+
+@media (min-width: 768px) {
+    .select__dropdown .select2-results__option {
+        padding: 15px 30px !important;
+    }
+}
+
+/*
+<div class="inputs radio">
+  <div class="radio__wrapper">
+    <div class="radio__lables">
+      <span class="radio__label">Ваш пол</span>
+      <span class="radio__label inputs-error">Выберите пол</span>
+    </div>
+
+    <div class="radio__items">
+      <label class="radio__label">
+        <input class="radio__input" type="radio" name="sex" value="male" />
+
+        <span class="radio__button">Мужской</span>
+      </label>
+      <label class="radio__label">
+        <input class="radio__input" type="radio" name="sex" value="female" />
+        <span class="radio__button">Женский</span>
+      </label>
+    </div>
+  </div>
+</div>
+*/
+.radio {
+    --clr-checked: var(--color-07, #000);
+}
+
+.radio__lables {
+    order: -1;
+    margin: 0 0 var(--gap) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap) 10px;
+}
+
+@media (min-width: 768px) {
+    .radio__lables {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 10px;
+    }
+}
+
+.radio__label {
+    display: block;
+    font-size: var(--label-fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--label-clr);
+    transition: color 0.2s linear;
+}
+
+.radio__label.inputs-error {
+    color: var(--error-clr);
+}
+
+.radio__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .radio__items {
+        gap: 10px 20px;
+    }
+}
+
+.radio__input {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    z-index: -999;
+}
+
+.radio__input:checked + .radio__button {
+    color: var(--clr-checked);
+    border-color: var(--clr-focus);
+    background: var(--clr-focus);
+}
+
+.radio__label {
+    display: block;
+}
+
+.radio__button {
+    width: 100%;
+    min-height: var(--height);
+    padding: 5px var(--pi);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    color: var(--clr);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-clr);
+    background: var(--bg);
+    transition: color 0.2s linear, border-color 0.2s linear, background 0.2s linear;
+}
+
+@media (any-hover: hover) {
+    .radio__button:hover {
+        border-color: var(--clr-focus);
+    }
+}
+
+.autocomplete-suggestions {
+    padding: 8px var(--pi);
+    overflow: auto;
+    border: 1px solid var(--clr-focus);
+    border-radius: var(--border-radius);
+    background: var(--bg);
+    transform: translate3d(0, var(--gap), 0);
+}
+
+.autocomplete-suggestion {
+    padding: 5px 0;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: var(--label-fs);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--clr);
+    transition: color 0.2s linear;
+}
+
+@media (any-hover: hover) {
+    .autocomplete-suggestion:hover {
+        color: var(--clr-focus);
+    }
+}
+
+.autocomplete-suggestions strong {
+    font-weight: 400;
+    color: var(--clr-focus);
+}
+
+.autocomplete-group {
+    padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+/*
+<div class="autocomplete-suggestions">
+    <div class="autocomplete-group"><strong>NHL</strong></div>
+    <div class="autocomplete-suggestion autocomplete-selected">...</div>
+    <div class="autocomplete-suggestion">...</div>
+    <div class="autocomplete-suggestion">...</div>
+</div>
+*/
+.contact-info__form {
+    display: grid;
+    gap: 25px;
+}
+
+@media (min-width: 768px) {
+    .contact-info__form {
+        gap: 40px;
+    }
+}
+
+.contact-info__label {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-04, #efda1c);
+}
+
+@media (min-width: 992px) {
+    .contact-info__label {
+        font-size: 1.625rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact-info__label {
+        font-size: 2rem;
+    }
+}
+
+.contact-info__inputs {
+    display: grid;
+    gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .contact-info__inputs {
+        gap: 20px;
+    }
+}
+
+.popup-layout {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: calc(var(--zIndex) + 1);
+    background: rgba(10, 17, 23, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+}
+
+.popup-layout.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: calc(var(--zIndex) + 2);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+}
+
+.popup.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.popup.active .popup__body {
+    transform: scale(1);
+}
+
+.popup__wrapper {
+    min-height: 100%;
+    padding: 50px var(--container-pi);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__body {
+    width: 100%;
+    max-width: 51.25rem;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid var(--color-05, #01fff0);
+    background: var(--color-06, #121e28);
+    position: relative;
+    transform: scale(1.1);
+    transition: transform 0.2s linear;
+}
+
+@media (min-width: 768px) {
+    .popup__body {
+        padding: 30px 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .popup__body {
+        padding: 45px 20px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .popup__body {
+        padding: 85px 20px;
+    }
+}
+
+.popup__body-wrapper {
+    flex: 0 1 var(--max-width-container-secondary);
+}
+
+.popup__label {
+    margin: 0 0 0.625rem 0;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-04, #efda1c);
+}
+
+@media (min-width: 992px) {
+    .popup__label {
+        font-size: 1.625rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .popup__label {
+        font-size: 2rem;
+    }
+}
+
+.popup__text {
+    margin: 0 0 30px 0;
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-02, #c6c6c6);
+}
+
+.popup__text a {
+    text-decoration: underline;
+    color: var(--color-01, #ffffff);
+}
+
+@media (any-hover: hover) {
+    .popup__text a:hover {
+        text-decoration: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .popup__text {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .popup__text {
+        font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .popup__text {
+        font-size: 1.25rem;
+    }
+}
+
+.popup__actions {
+    display: grid;
+    gap: 20px;
 }
