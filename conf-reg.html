@@ -11,7 +11,7 @@
     <meta name="google" content="notranslate" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="description" content="" />
-    <title>Контактная информация</title>
+    <title>Подтверждение регистрации</title>
     <link rel="stylesheet" href="./css/insides.min.css" />
   </head>
   <body>
@@ -62,75 +62,20 @@
         </div>
       </header>
       <main class="content">
-        <div class="contact-info">
+        <div class="insides">
+          <div class="container">
+            <div class="title">
+              <h3>Подтверждение регистрации</h3>
+              <span>Мы отправили Вам СМС с кодом</span>
+            </div>
+          </div>
           <div class="container-secondary">
-            <form class="contact-info__form">
-              <span class="contact-info__label">Контактная информация</span>
-              <div class="contact-info__inputs">
+            <form class="insides__form">
+              <div class="insides__inputs">
                 <div class="inputs input">
                   <div class="input__wrapper">
                     <div class="input__group">
                       <input class="input__target" type="text" />
-                      <div class="input__lables">
-                        <span class="input__label">Фамилия</span>
-                        <span class="input__label inputs-error"
-                          >Заполните поле</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="inputs input">
-                  <div class="input__wrapper">
-                    <div class="input__group">
-                      <input class="input__target" type="text" />
-                      <div class="input__lables">
-                        <span class="input__label">Имя</span>
-                        <span class="input__label inputs-error"
-                          >Заполните поле</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="inputs input error">
-                  <div class="input__wrapper">
-                    <div class="input__group">
-                      <input class="input__target" type="text" />
-                      <div class="input__lables">
-                        <span class="input__label">Отчество</span>
-                        <span class="input__label inputs-error"
-                          >Заполните поле</span
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="inputs input">
-                  <div class="input__wrapper">
-                    <div class="input__group">
-                      <input
-                        class="input__target"
-                        type="email"
-                        data-autocomplete
-                        value="m"
-                      />
-                      <div class="input__lables">
-                        <span class="input__label">Электронная почта</span>
-                        <span class="input__label inputs-error"
-                          >Заполните поле</span
-                        >
-                      </div>
-                    </div>
-                    <p class="inputs__description">
-                      Для получения договора и документов об оплате
-                    </p>
-                  </div>
-                </div>
-                <div class="inputs input">
-                  <div class="input__wrapper">
-                    <div class="input__group">
-                      <input class="input__target" type="tel" />
                       <div class="input__lables">
                         <span class="input__label">Мобильный телефон</span>
                         <span class="input__label inputs-error"
@@ -140,50 +85,30 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="inputs checkbox">
-                <div class="checkbox__wrapper">
-                  <label class="checkbox__label"
-                    ><input class="checkbox__input" type="checkbox" />
-                    <div class="checkbox__icon">
-                      <svg>
-                        <use
-                          href="./images/sprite.svg#check"
-                          xlink:href="./images/sprite.svg#check"
-                        ></use>
-                      </svg>
+                <div class="inputs input">
+                  <div class="input__wrapper">
+                    <div class="input__group">
+                      <input class="input__target" type="text" />
+                      <div class="input__lables">
+                        <span class="input__label">Код получения</span>
+                        <span class="input__label inputs-error"
+                          >Заполните поле</span
+                        >
+                      </div>
                     </div>
-                    <p class="checkbox__text">
-                      Я ознакомлен и согласен со
-                      <span data-popup-id="id_popup">следующим</span>
-                    </p></label
-                  >
-                </div>
-              </div>
-              <button class="button" type="submit">Далее</button>
-            </form>
-          </div>
-          <div id="id_popup" class="popup" data-popup>
-            <div class="popup__wrapper" data-popup-wrapper>
-              <div class="popup__body" data-popup-body>
-                <div class="popup__body-wrapper">
-                  <span class="popup__label">Соглашения</span>
-                  <p class="popup__text">
-                    Даю свое согласие на
-                    <a href="#">обработку персональных данных</a> и на получение
-                    рекламных материалов, принимаю условия публичной оферты,
-                    соглашение о применении рекуррентных платежей и тарифы
-                    сервиса. Осознаю, что оплата услуг не гарантирует получение
-                    займа. Настоящим подтверждаю, что не являюсь получателем
-                    единовременных и/или регулярных денежных выплат,
-                    предусмотренных Указами Президента РФ.
-                  </p>
-                  <div class="popup__actions">
-                    <a class="popup__action button" href="#">Далее</a>
                   </div>
                 </div>
               </div>
-            </div>
+              <div class="insides__actions">
+                <button class="button" type="submit">Далее</button>
+              </div>
+              <button class="insides__recode" type="button">
+                Отправить код повторно
+              </button>
+              <p class="insides__subtext">
+                Запросить СМС повторно можно <strong>через 60 сек</strong>
+              </p>
+            </form>
           </div>
           <picture class="background"
             ><source
