@@ -2713,10 +2713,13 @@ textarea.input__target {
 }
 
 .documents__logo {
-    max-width: 100px;
-    height: 40px;
+    width: 100%;
+    max-width: 140px;
+    height: 60px;
+    padding: 5px 10px;
     border-radius: 12px;
     overflow: hidden;
+    background: var(--color-01, #fff);
 }
 
 .documents__logo img {
@@ -2728,7 +2731,8 @@ textarea.input__target {
 
 @media (min-width: 992px) {
     .documents__logo {
-        flex: 0 0 100px;
+        flex: 0 0 140px;
+        width: auto;
         max-width: none;
     }
 }
