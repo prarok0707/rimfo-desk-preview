@@ -4920,9 +4920,11 @@
         });
 
         input.addEventListener('keydown', (event) => {
+          const isPressBackspace =
+            event.code === 'Backspace' || event.key === 'Backspace';
           const length = instanceMasks.date.unmaskedValue.length;
 
-          if (event.code === 'Backspace' && !length) {
+          if (isPressBackspace && !length) {
             if (prevInput) prevInput.focus();
           }
         });
@@ -4947,9 +4949,11 @@
         });
 
         input.addEventListener('keydown', (event) => {
+          const isPressBackspace =
+            event.code === 'Backspace' || event.key === 'Backspace';
           const length = instanceMasks.cvv.unmaskedValue.length;
 
-          if (event.code === 'Backspace' && !length) {
+          if (isPressBackspace && !length) {
             if (prevInput) prevInput.focus();
           }
         });
